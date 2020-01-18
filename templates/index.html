@@ -1,11 +1,15 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 <head>
+<script src="{{ url_for('static', filename='script.js') }}"></script>
+<link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 <title>Timely Transit</title>
 <meta charset="UTF-8">
 </head>
 <body>
-    <h1>"Timely Transit"</h1>
+    <h1>Timely Transit</h1>
+    <h2>Minutes to the closest bus stop is: {{ MINUTES_TO_BUS_STOP }}</h2>
+    <h3>Today's date and time in some weird format: {{ dt }}</h3>
 </body>
 </html>
 
