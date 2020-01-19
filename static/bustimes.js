@@ -9,10 +9,8 @@ class timeTabler {
         while (this.start <= this.end) {
             this.times.push(this.start);
             this.start += this.increment;
-            
         }
     }
-
     addMoreTimes(s, e, inc) {
         while (s <= e) {
             this.times.push(this.s);
@@ -21,7 +19,6 @@ class timeTabler {
 
         this.times.sort();
     }
-
     getBusName() {
         return (this.bus);
     }
@@ -33,18 +30,18 @@ class timeTabler {
     findClosestTimes(time) {
         var closestTime = null;
         for (i = 0; i < this.times.length; i++) {
-            if (closestTime == null || ((this.times[i] - time) < closestTime)) {
+            if (closestTime == null || (Math.abs((this.times[i] - time)) < closestTime)) {
                 closestTime = this.times[i];
             }
         }
-        return (closestTime);
+        return closestTime;
     }
 }
 
 SHMF10 = new timeTabler(459, 1185, 60, 'Bus 10', 'Science Hill');
 SCMMF10 = new timeTabler(465, 1125, 60, 'Bus 10', 'Santa Cruz Metro Center');
 SCMMF10.addMoreTimes(735, 1155, 60);
-CWMF10 = new timeTabler(437, 1157, 30, 'Bus 10', 'Cedar and Walnut');
+CWMF10 = new timeTabler(437, 1157, 30, 'Bus 10', 'Cedar & Walnut');
 HLMF10 = new timeTabler(443, 1163, 30, 'Bus 10', 'High and Laurel');
 HLMF10.addMoreTimes(470, 1190, 30);
 
@@ -94,7 +91,7 @@ BMSS19 = new timeTabler(607, 1147, 60, 'Bus 19', 'Bay and Mission');
 SHSS19 = new timeTabler(619, 1159, 60, 'Bus 19', 'Science Hill');
 BMSS19.addMoreTimes(629, 1169, 60);
 
-var MF = [
+MF = [
         SCMMF10,
         SCMMF15,
         SCMMF16,
@@ -109,7 +106,7 @@ var MF = [
         CWMF10
     ];
 
-var SS = [
+SS = [
         SCMSS10,
         SCMSS16,
         SCMSS19,
@@ -120,17 +117,16 @@ var SS = [
         BMSS19,
         CWSS10,
     ];
-alert ("at least sth happen 1.5");
+
 function closest(stop) {
     var time = null;
     var bus = null;
     var currentDate = new Date();
     var current_time = null;
-    var stop = null;
-    if (currentDate.getDay() == 6 || currentDate.getDay() == 0) {
+    if ((currentDate.getDay() == 6) || (currentDate.getDay() == 0)) {
         for (i = 0; i < SS.length; i++) {
-            if ((stop == SS[i].getStopName()) && (time == null || time > SS[i].findClosestTimes())) {
-                current_time = (currentDate.getHours()*60) + currentDate.getMinutes();
+            if ((stop == SS[i].getStopName()) && ((time == null) || (time > SS[i].findClosestTimes()))) {
+                current_time = ((currentDate.getHours()*60) + currentDate.getMinutes());
                 time = SS[i].findClosestTimes(current_time);
                 bus = SS[i].getBusName();
             }
@@ -138,14 +134,12 @@ function closest(stop) {
     }
     else {
         for (i = 0; i < MF.length; i++) {
-            if ((stop == MF[i].getStopName()) && (time == null || time > MF[i].findClosestTimes())) {
-                current_time = (currentDate.getHours()*60) + currentDate.getMinutes();
+            if ((stop == MF[i].getStopName()) && ((time == null) || (time > MF[i].findClosestTimes()))) {
+                current_time = ((currentDate.getHours()*60) + (currentDate.getMinutes()));
                 time = MFS[i].findClosestTimes(current_time);
                 bus = MF[i].getBusName();
             }
         }
     }
-    alert ("at least sth happen 3");
-    var a = Math.floor(current_time-time);
-    alert (bus + " will come to your stop in " + a + " minutes");
+    alert (bus + " will come to your stop in " + Math.floor(Math.abs(current_time-time)) + " minutes");
 }
