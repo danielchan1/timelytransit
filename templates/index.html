@@ -1,15 +1,28 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 <head>
-<script src="{{ url_for('static', filename='script.js') }}"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link href="https://fonts.googleapis.com/css?family=Raleway&display=swap" rel="stylesheet">
 <link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 <title>Timely Transit</title>
 <meta charset="UTF-8">
 </head>
 <body>
-    <h1>Timely Transit</h1>
-    <h2>Minutes to the closest bus stop is: {{ MINUTES_TO_BUS_STOP }}</h2>
-    <h3>Today's date and time in some weird format: {{ dt }}</h3>
+    <div class="header" style="background-color: #458ccc; wifth: 100%">
+    <h1 style="text-align: center; padding: 15px">What Bus Do You Need To Take?</h1>
+    </div>
+    <div>
+        <a href="#1">Bus 10</a>
+    </div>
+    <div>
+        <a href="#2">Bus 15</a>
+    </div>
+    <div>
+        <a href="#3">Bus 16</a>
+    </div>
+    <div>
+        <a href="#4">Bus 19</a>
+    </div>
 </body>
 </html>
 
