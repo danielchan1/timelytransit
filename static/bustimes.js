@@ -94,6 +94,7 @@ BMSS19 = new timeTabler(607, 1147, 60, 'Bus 19', 'Bay & Mission');
 SHSS19 = new timeTabler(619, 1159, 60, 'Bus 19', 'Science Hill');
 BMSS19.addMoreTimes(629, 1169, 60);
 
+alert ("at least sth happen 1")
 var MF = [
         SCMMF10,
         SCMMF15,
@@ -122,6 +123,7 @@ var SS = [
     ];
 
 function closest(stop) {
+    alert ("at least sth happen 2")
     var time = null;
     var bus = null;
     var currentDate = new Date();
@@ -144,6 +146,7 @@ function closest(stop) {
             }
         }
     }
+    alert ("at least sth happen 3")
     var a = Math.floor(current_time-time)
     alert (bus + " will come to your stop in " + a + " minutes");
 }
