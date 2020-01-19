@@ -19,10 +19,10 @@ class timeTabler {
         this.times.sort();
     }
     getBusName() {
-        return (this.bus);
+        return this.bus;
     }
     getStopName() {
-        return (this.stopName);
+        return this.stopName;
     }
     findClosestTimes(time) {
         var closestTime = null;
@@ -116,7 +116,15 @@ var SS = [
         CWSS10,
     ];
 
-
+//https://www.w3resource.com/javascript-exercises/javascript-date-exercise-13.php
+function timeConvert(n) {
+    var num = n;
+    var hours = (num / 60);
+    var rhours = Math.floor(hours);
+    var minutes = (hours - rhours) * 60;
+    var rminutes = Math.round(minutes);
+    return rhours + " hour(s) and " + rminutes + " minute(s).";
+}
 
 document.getElementById('santa').onclick = function() {
     stop = 'Santa Cruz Metro Center';
@@ -149,7 +157,13 @@ function nearest(stop) {
             if ((stop == SS[i].getStopName()) && ((time == null) || (time > SS[i].findClosestTimes()))) {
                 current_time = ((currentDate.getHours()*60) + (currentDate.getMinutes()));
                 time = SS[i].findClosestTimes(current_time);
-                bus = SS[i].getBusName();
+                try {
+                    bus = SS[i].getBusName();
+                }
+                catch(err) {
+                    alert("Please try again later.");
+                }
+                
             }
         }
     }
@@ -158,16 +172,29 @@ function nearest(stop) {
             if ((stop == MF[i].getStopName()) && ((time == null) || (time > MF[i].findClosestTimes()))) {
                 current_time = ((currentDate.getHours()*60) + (currentDate.getMinutes()));
                 time = MF[i].findClosestTimes(current_time);
-                bus = MF[i].getBusName();
+                try {
+                    bus = MF[i].getBusName();
+                }
+                catch(err) {
+                    alert("Please try again later.");
+                }
             }
         }
     }
     var a = Math.floor(Math.abs(current_time-time))
-    if (a == 0) {
+    if (bus == null) {
+        alert("There are no buses going to your stop today.")
+    }
+    else if (a == 0) {
         alert("The bus is at your stop now!")
     }
     else {
-        alert (bus + " will come to your stop in " + a + " minutes");
+        if (a >= 60) {
+            alert (bus + " will come to your stop in " + timeConvert(a));
+        }
+        else {
+            alert (bus + " will come to your stop in " + a + " minutes.");
+        }
     }
     stop = null
 }
