@@ -39,7 +39,6 @@ class timeTabler {
         }
         return closestTime;
     }
-
 }
 
 SHMF10 = new timeTabler(459, 1185, 60, 'Bus 10', 'Science Hill');
@@ -96,17 +95,17 @@ SHSS19 = new timeTabler(619, 1159, 60, 'Bus 19', 'Science Hill');
 BMSS19.addMoreTimes(629, 1169, 60);
 
 MF = [
-        SCMMF10, 
-        SCMMF15, 
-        SCMMF16, 
-        SCMMF19, 
-        SHMF10, 
-        SHMF15, 
-        SHMF16, 
-        SHMF19, 
-        BMMF15, 
-        BMMF16, 
-        BMMF19, 
+        SCMMF10,
+        SCMMF15,
+        SCMMF16,
+        SCMMF19,
+        SHMF10,
+        SHMF15,
+        SHMF16,
+        SHMF19,
+        BMMF15,
+        BMMF16,
+        BMMF19,
         CWMF10
     ]
 
@@ -121,3 +120,29 @@ SS = [
         BMSS19,
         CWSS10,
     ]
+
+function closest(stop) {
+    var time = null;
+    var bus = null;
+    var currentDate = new Date();
+    var current_time = null;
+    if (currentDate.getDay() == 6 || currentDate.getDay() == 0) {
+        for (i = 0; i < SS.length; i++) {
+            if (stop == SS[i].getStopName() && (time == null || time > SS[i].findClosestTimes())) {
+                current_time = (currentDate.getHours()*60) + currentDate.getMinutes()
+                time = SS[i].findClosestTimes(current_time);
+                bus = SS[i].getBusName();
+            }
+        }
+    }
+    else {
+        for (i = 0; i < MF.length; i++) {
+            if (stop == MF[i].getStopName() && (time == null || time > MF[i].findClosestTimes())) {
+                current_time = (currentDate.getHours()*60) + currentDate.getMinutes()
+                time = MFS[i].findClosestTimes(current_time);
+                bus = MF[i].getBusName();
+            }
+        }
+    }
+    alert(bus + " will come to your stop in " + Math.floor(current_time-time) + " minutes");
+}

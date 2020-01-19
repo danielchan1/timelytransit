@@ -2,6 +2,7 @@
 <html lang="en" dir="ltr">
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="{{ url_for('static', filename='bustimes.js') }}"></script>
 <link href="https://fonts.googleapis.com/css?family=Raleway&display=swap" rel="stylesheet">
 <link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 <title>Timely Transit</title>
@@ -9,19 +10,22 @@
 </head>
 <body>
     <div class="header" style="background-color: #458ccc; wifth: 100%">
-    <h1 style="text-align: center; padding: 15px">What Bus Do You Need To Take?</h1>
+    <h1 style="text-align: center; padding: 15px">Where is the closest Bus Stop to you?</h1>
     </div>
     <div>
-        <a href="#1">Bus 10</a>
+        <button onclick="closest('Santa Cruz Metro Center')">Santa Cruz Metro Center</button>
     </div>
     <div>
-        <a href="#2">Bus 15</a>
+        <button onclick="closest('Science Hill')">Science Hill</button>
     </div>
     <div>
-        <a href="#3">Bus 16</a>
+        <button onclick="closest('Bay & Mission')">Bay & Mission</button>
     </div>
     <div>
-        <a href="#4">Bus 19</a>
+        <button onclick="closest('High & Laurel')">High & Laurel</button>
+    </div>
+    <div>
+        <button onclick="closest('Cedar & Walnut')">Cedar & Walnut</button>
     </div>
 </body>
 </html>

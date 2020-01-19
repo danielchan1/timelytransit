@@ -106,11 +106,11 @@ def main():
                             print("{}:{}".format(x, y), end = " ")
                     print("")
     
-    print("Monday-Friday")
+    """print("Monday-Friday")
     timetable_generator(MF)
     print("\nSaturday-Sunday")
-    timetable_generator(SS)
-    return render_template('index.html',MF = MF, SS = SS)
+    timetable_generator(SS)"""
+    return render_template('index.html')
 
 
 if __name__ == '__main__':
